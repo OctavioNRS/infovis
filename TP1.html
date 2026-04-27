@@ -2,23 +2,251 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>TP1 InfoVis</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TP1 InfoVis - Análisis de Datos Personales</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 60px 40px;
+      border-radius: 10px;
+      margin-bottom: 50px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2.5em;
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+
+    .hero .intro-text {
+      font-size: 1.1em;
+      opacity: 0.95;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .section {
+      background: white;
+      padding: 40px;
+      margin-bottom: 40px;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .section:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .section-title {
+      font-size: 1.8em;
+      color: #667eea;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #667eea;
+      font-weight: 600;
+    }
+
+    .section-description {
+      background: #f8f9fa;
+      padding: 20px;
+      border-left: 4px solid #667eea;
+      margin-bottom: 30px;
+      border-radius: 5px;
+      font-style: italic;
+      color: #666;
+      min-height: 60px;
+    }
+
+    .placeholder {
+      color: #999;
+      font-weight: 500;
+    }
+
+    .visualization-container {
+      margin-top: 30px;
+      padding: 20px;
+      background: #fafafa;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .visualization-container > * {
+      width: 100%;
+    }
+
+    .conclusion {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 50px 40px;
+      border-radius: 10px;
+      margin-top: 50px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .conclusion h2 {
+      font-size: 2em;
+      margin-bottom: 25px;
+      font-weight: 700;
+    }
+
+    .conclusion-content {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-left: 4px solid white;
+      border-radius: 5px;
+      min-height: 120px;
+      font-size: 1.05em;
+      line-height: 1.8;
+    }
+
+    .placeholder-text {
+      opacity: 0.9;
+      font-style: italic;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        padding: 40px 20px;
+      }
+
+      .hero h1 {
+        font-size: 2em;
+      }
+
+      .section {
+        padding: 25px;
+      }
+
+      .section-title {
+        font-size: 1.5em;
+      }
+
+      .conclusion {
+        padding: 30px 20px;
+      }
+
+      .conclusion h2 {
+        font-size: 1.5em;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Trabajo Practico 1 - Datos Personales</h1>
-  <div>
-    Trabajo basado en las salidas que realizo durante cada dia, tomando en cnosideracion la duracion, el objetivo y la ubicacion a la que voy
-  </div>
-  <h2>
-    ¿Por qué tuve que salir de mi casa?
-  </h2>
-<div class="flourish-embed flourish-chart" data-src="visualisation/28295281"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/28295281/thumbnail" width="100%" alt="visualization" /></noscript></div>
+  <div class="container">
+    <div class="hero">
+      <h1>Trabajo Práctico 1 - Datos Personales</h1>
+      <p class="intro-text">Análisis de mis actividades diarias, considerando lugares, distancia y duración. Los datos considerados fueron tomados desde "Mis Rutas" de Google Maps</p>
+    </div>
 
-  <h2>
-    ¿Qué dias fueron los que mas sali?
-  </h2>
-  <object type="image/svg+xml" data="https://octavionrs.github.io/infovis/rawgraphs.svg"></object>
-  
-  </body>
+    <!-- Visualizacion 1: Lugares visitados -->
+    <div class="section">
+      <h2 class="section-title">A donde suelo salir?</h2>
+      <div class="visualization-container">
+        <div class='tableauPlaceholder' id='viz1777283735465' style='position: relative'><noscript><a href='#'><img alt='Sheet 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;lo&#47;locations_visited&#47;Sheet1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='path' value='views&#47;locations_visited&#47;Sheet1?:language=en-US&amp;:embed=true&amp;publish=yes&amp;:sid=&amp;:redirect=auth' /> <param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;lo&#47;locations_visited&#47;Sheet1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /><param name='filter' value='publish=yes' /></object></div>
+        <script type='text/javascript'>
+          var divElement = document.getElementById('viz1777283735465');
+          var vizElement = divElement.getElementsByTagName('object')[0];
+          vizElement.style.width='100%';
+          vizElement.style.height=(divElement.offsetWidth*0.75)+'px';
+          var scriptElement = document.createElement('script');
+          scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+          vizElement.parentNode.insertBefore(scriptElement, vizElement);
+        </script>
+      </div>
+      <div class="section-description">
+        <span class="placeholder">Vista de mis ubicaciones visitadas con Tableau. El tamaño del circulo con centro en el lugar visitado indica la cantidad de veces que fue visitado.</span>
+      </div>
+    </div>
+
+    <!-- Visualizacion 2: Distancia por dia -->
+    <div class="section">
+      <h2 class="section-title">Cuanto recorro cada día?</h2>
+      <div class="visualization-container">
+        <object type="image/svg+xml" data="https://octavionrs.github.io/infovis/distancia_por_dia.svg"></object>
+      </div>
+      <div class="section-description">
+        <span class="placeholder">Distancia en metros recorrida cada día. Se quitaron los días sin actividad para mejorar la visualización.</span>
+      </div>
+    </div>
+
+    <!-- Visualizacion 3: Flourish 1 -->
+    <div class="section">
+      <h2 class="section-title">Cuanto suelo recorrer cada día de la semana?</h2>
+      <div class="visualization-container">
+        <div class="flourish-embed flourish-chart" data-src="visualisation/28714645"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/28714645/thumbnail" width="100%" alt="chart visualization" /></noscript></div>
+      </div>
+      <div class="section-description">
+        <span class="placeholder">Promedio de distancia recorrida por día de la semana en metros. Muestra mi tendencia semanal.</span>
+      </div>
+    </div>
+
+    <!-- Visualizacion 4: DataWrapper - Time Distribution (General) -->
+    <div class="section">
+      <h2 class="section-title">Cuanto tiempo suelo estar fuera de casa?</h2>
+      <div class="visualization-container" style="min-height:355px">
+        <div style="min-height:355px" id="datawrapper-vis-9C2Fl"><script type="text/javascript" defer src="https://datawrapper.dwcdn.net/9C2Fl/embed.js" charset="utf-8" data-target="#datawrapper-vis-9C2Fl"></script><noscript><img src="https://datawrapper.dwcdn.net/9C2Fl/full.png" alt="Como distribuyo mi tiempo? (Stacked Bars)" /></noscript></div>
+      </div>
+      <div class="section-description">
+        <span class="placeholder">De las 24hs del día, cuanto tiempo estoy en casa y cuanto tiempo estoy fuera.</span>
+      </div>
+    </div>
+
+    <!-- Visualizacion 5: DataWrapper - Time Distribution (Useful) -->
+    <div class="section">
+      <h2 class="section-title">Sabiendo que tengo que dormir 8hs, como distribuyo el resto del día?</h2>
+      <div class="visualization-container" style="min-height:355px">
+        <div style="min-height:355px" id="datawrapper-vis-GdCWA"><script type="text/javascript" defer src="https://datawrapper.dwcdn.net/GdCWA/embed.js" charset="utf-8" data-target="#datawrapper-vis-GdCWA"></script><noscript><img src="https://datawrapper.dwcdn.net/GdCWA/full.png" alt="Como distribuyo mi tiempo (util)? (Stacked Bars)" /></noscript></div>
+      </div>
+      <div class="section-description">
+        <span class="placeholder">Sin considerar 8hs de sueño, se vuelve a mostrar la distribución de mi tiempo</span>
+      </div>
+    </div>
+
+    <!-- Visualizacion 6: Flourish 2 -->
+    <div class="section">
+      <h2 class="section-title">Todos mis días son distintos semana a semana. Pero qué tan diferentes son? O qué tan parecidos?</h2>
+      <div class="visualization-container">
+        <div class="flourish-embed flourish-chart" data-src="visualisation/28714052"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/28714052/thumbnail" width="100%" alt="chart visualization" /></noscript></div>
+      </div>
+      <div class="section-description">
+        <span class="placeholder">Muestra la probabilidad de estar fuera de casa en diferentes días de la semana. A mayor valor, mas probable estar fuera.</span>
+      </div>
+    </div>
+
+    <div class="conclusion">
+      <h2>🎯 Conclusiones</h2>
+      <div class="conclusion-content">
+        <p>Viendo mis lugares más visitados y mi distribución de tiempo a lo largo de las semanas es posible ver cómo está definida mi rutina.</p>
+        <p>La variación en mi rutina semanal muestra constancia en ciertos horarios, pero también muestra que soy una persona poco constante o flexible en otros momentos de mi semana.</p>
+        <p>Además, viendo mis lugares más visitados, entiendo que soy una persona que no prueba muchas cosas, sino que me mantengo en mi zona de confort.</p>
+        <p>Este tipo de análisis me permitió entender mejor mi rutina y mis horarios en función de mis salidas.</p>
+      </div>
+    </div>
+  </div>
+</body>
 </html>
